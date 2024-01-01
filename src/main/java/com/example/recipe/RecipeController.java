@@ -10,31 +10,30 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
 public class RecipeController {
-	
-	RecipeService recipeService = new RecipeService();
+
+    RecipeService recipeService = new RecipeService();
 
     @GetMapping("/recipes")
-    public ArrayList<Recipe> get_Recipe_List(){
+    public ArrayList<Recipe> get_Recipe_List() {
 
         return recipeService.getRecipeList();
     }
 
     @PostMapping("/recipes")
-    public Recipe add_Recipe(@RequestBody Recipe recipe){
-    	System.out.println();
+    public Recipe add_Recipe(@RequestBody Recipe recipe) {
+
         return recipeService.addRecipe(recipe);
     }
 
-     @GetMapping("/recipes/{recipeId}")
-    public Recipe get_Recipe_ById(@PathVariable("recipeId") int recipeId){
+    @GetMapping("/recipes/{recipeId}")
+    public Recipe get_Recipe_ById(@PathVariable("recipeId") int recipeId) {
 
         return recipeService.getRecipeById(recipeId);
-    } 
-    
-    @PutMapping("/recipes/{playerId}")
+    }
+
+    @PutMapping("/recipes/{recipeId}")
     public Recipe update_Recipe(@PathVariable("recipeId") int recipeId, @RequestBody Recipe recipe) {
 
         return recipeService.updateRecipe(recipeId, recipe);
@@ -42,9 +41,9 @@ public class RecipeController {
 
     @DeleteMapping("/recipes/{recipeId}")
     public void delete_Recipe(@PathVariable("recipeId") int recipeId) {
-    
-    	recipeService.deleteRecipe(recipeId);
-        
+
+        recipeService.deleteRecipe(recipeId);
+
     }
 
 }
